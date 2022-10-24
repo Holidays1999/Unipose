@@ -1,0 +1,32 @@
+# ===== Architecture ===== #
+backbone: ResNet101
+
+# ===== Dataset ===== #
+data_url: ../data/LSPDataset
+set: LSPDataset
+num_classes: 14
+
+# ===== Learning Rate Policy ======== #
+optimizer: momentum
+base_lr: 0.0001
+warmup_lr: 0.00001
+min_lr: 0.00001
+lr_scheduler: cosine_lr
+warmup_length: 5
+
+# ===== Network training configs ===== #
+amp_level: O1
+clip_global_norm_value: 5.
+is_dynamic_loss_scale: True
+epochs: 120
+weight_decay: 0.0005
+momentum: 0.9
+batch_size: 32
+
+# ===== Hardware setup ===== #
+num_parallel_workers: 16
+device_target: Ascend
+
+# ==== eval setup ==== #
+th_pck: 0.2
+th_pckh: 0.5
